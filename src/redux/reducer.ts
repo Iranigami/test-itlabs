@@ -1,10 +1,10 @@
-import { Action } from 'redux';
-import { AppState, User, initialState } from './types';
+import { Action } from "redux";
+import { AppState, User, initialState } from "./types";
 
 enum Actions {
-  ADD_USER = 'ADD_USER',
-  EDIT_USER = 'EDIT_USER',
-  DELETE_USER = 'DELETE_USER',
+  ADD_USER = "ADD_USER",
+  EDIT_USER = "EDIT_USER",
+  DELETE_USER = "DELETE_USER",
 }
 
 interface AddUserAction extends Action {
@@ -24,7 +24,10 @@ interface DeleteUserAction extends Action {
 
 type KnownActions = AddUserAction | EditUserAction | DeleteUserAction;
 
-export const reducer = (state: AppState = initialState, action: KnownActions): AppState => {
+export const reducer = (
+  state: AppState = initialState,
+  action: KnownActions,
+): AppState => {
   switch (action.type) {
     case Actions.ADD_USER:
       return {
@@ -35,7 +38,7 @@ export const reducer = (state: AppState = initialState, action: KnownActions): A
       return {
         ...state,
         users: state.users.map((user) =>
-          user.id === action.payload.id ? action.payload : user
+          user.id === action.payload.id ? action.payload : user,
         ),
       };
     case Actions.DELETE_USER:
